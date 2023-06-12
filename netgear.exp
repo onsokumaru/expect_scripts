@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+
+set switch_addr 172.23.0.1
+set username admin
+set passwd netgear1234
+set cmd "show ip brief"
+
+spawn telnet $switch_addr
+expect "User:"
+send -- "$username\r"
+expect "Password:"
+send -- "$passwd\r"
+expect "(JPSW1)>"
+send -- "$cmd\r"
+expect "(JPSW1)>"
+send -- "logout\r"

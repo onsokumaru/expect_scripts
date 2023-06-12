@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+
+set switch_addr 172.20.0.1
+set username admin
+set passwd admin
+set cmd "sh mac address-table count"
+
+spawn telnet $switch_addr
+expect "Username:"
+send -- "$username\r"
+expect "Password:"
+send -- "$passwd\r"
+expect "JPSW1"
+send -- "$cmd\r"
+expect "JPSW1"
+send -- "exit\r"
